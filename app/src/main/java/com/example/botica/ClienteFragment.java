@@ -63,6 +63,7 @@ public class ClienteFragment extends Fragment{
         buscador=(SearchView)root.findViewById(R.id.buscar);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
+        
         cargarC(root);
 
         buscador.setOnQueryTextListener( new SearchView.OnQueryTextListener()

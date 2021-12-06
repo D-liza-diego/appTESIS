@@ -56,7 +56,7 @@ public class ClienteAdaptador extends RecyclerView.Adapter<ClienteAdaptador.Clie
     public ClienteViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.cardcliente, null);
-        return new ClienteViewHolder(view);
+        return new ClienteAdaptador.ClienteViewHolder(view);
     }
 
     @Override
