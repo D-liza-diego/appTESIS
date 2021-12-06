@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/medicine"
+    tools:context=".proveedor_add">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center_horizontal"
+            android:text="BUSCAR PROVEEDOR"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+
+        <EditText
+            android:id="@+id/ruc_buscar"
+            android:layout_width="400px"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="24dp"
+            android:hint=""
+            android:inputType="number"
+            android:maxLength="11"
+            android:textSize="14dp"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/EnviarP"
+            android:layout_width="350px"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="45dp"
+            android:text="Buscar" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="200dp"
+            android:text="RUC"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/ruc_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="210dp"
+            android:layout_marginEnd="24dp"
+            android:inputType="text"
+            android:enabled="false"
+            android:textSize="13dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="250dp"
+            android:text="RAZON SOCIAL"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:id="@+id/Rsocial_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="270dp"
+            android:layout_marginEnd="24dp"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:textSize="14dp"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="310dp"
+            android:layout_marginLeft="30dp"
+            android:text="DIRECCION"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:id="@+id/Dfiscal_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="330dp"
+            android:layout_marginEnd="24dp"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:textSize="14dp" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="390dp"
+            android:layout_marginLeft="30dp"
+            android:text="ESTADO"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:id="@+id/Estado_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="380dp"
+            android:layout_marginEnd="24dp"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:textSize="14dp" />
+
+
+
+        <Button
+            android:id="@+id/SubirP"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="420dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="45dp"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:text="GUARDAR"
+
+            />
+    </RelativeLayout>
+
+
+</FrameLayout>

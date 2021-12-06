@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/DNIASC"
+        android:orderInCategory="100"
+        android:title="Dni ascendente"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/DNIDES"
+        android:orderInCategory="100"
+        android:title="Dni descendente"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/ApellidoASC"
+        android:orderInCategory="100"
+        android:title="Apellido ascendente"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/ApellidoDES"
+        android:orderInCategory="100"
+        android:title="Apellido descendente"
+        app:showAsAction="never" />
+</menu>

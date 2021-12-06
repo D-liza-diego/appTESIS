@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.botica.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.botica.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.botica.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/clienteFragment"
+        android:name="com.example.botica.ClienteFragment"
+        android:label="@string/menu_cliente"
+        tools:layout="@layout/fragment_cliente" />
+    <fragment
+        android:id="@+id/clienteEditFragment"
+        android:name="com.example.botica.clienteEditFragment"
+        android:label="Actualizar cliente"
+        tools:layout="@layout/fragment_cliente_edit" />
+    <fragment
+        android:id="@+id/proveedorFragment"
+        android:name="com.example.botica.ProveedorFragment"
+        android:label="Proveedores"
+        tools:layout="@layout/fragment_proveedor" />
+    <fragment
+        android:id="@+id/proveedor_add"
+        android:name="com.example.botica.proveedor_add"
+        android:label="Añadir proveedor"
+        tools:layout="@layout/fragment_proveedor_add" />
+</navigation>
