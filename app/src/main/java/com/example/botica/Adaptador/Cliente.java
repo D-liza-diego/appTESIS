@@ -32,7 +32,7 @@ public class Cliente implements Serializable {
     public static Comparator<Cliente> ADESC = new Comparator<Cliente>() {
         @Override
         public int compare(Cliente c1, Cliente c2) {
-            return c1.getApellidos().compareTo(c2.getApellidos());
+            return c2.getApellidos().compareTo(c1.getApellidos());
         }
     };
 

@@ -24,5 +24,9 @@
             android:id="@+id/proveedorFragment"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_proveedor" />
+        <item
+            android:id="@+id/productFragment"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Producto" />
     </group>
 </menu>

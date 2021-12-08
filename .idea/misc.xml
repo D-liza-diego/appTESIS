@@ -29,8 +29,18 @@
         <entry key="..\:/Users/Diego/AndroidStudioProjects/Botica/app/src/main/res/menu/menucrud.xml" value="0.4" />
         <entry key="..\:/Users/Diego/AndroidStudioProjects/Botica/app/src/main/res/menu/menuproveedor.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Diego/AndroidStudioProjects/GIT/appTESIS/app/src/main/res/drawable/bordercard.xml" value="0.19444444444444445" />
+        <entry key="..\:/Users/Diego/AndroidStudioProjects/GIT/appTESIS/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Diego/AndroidStudioProjects/GIT/appTESIS/app/src/main/res/layout/card_product.xml" value="0.4" />
         <entry key="..\:/Users/Diego/AndroidStudioProjects/GIT/appTESIS/app/src/main/res/layout/cardcliente.xml" value="0.264" />
+        <entry key="..\:/Users/Diego/AndroidStudioProjects/GIT/appTESIS/app/src/main/res/layout/cardproveedor.xml" value="0.4" />
         <entry key="..\:/Users/Diego/AndroidStudioProjects/GIT/appTESIS/app/src/main/res/layout/fragment_cliente.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Diego/AndroidStudioProjects/GIT/appTESIS/app/src/main/res/layout/fragment_cliente_edit.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Diego/AndroidStudioProjects/GIT/appTESIS/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Diego/AndroidStudioProjects/GIT/appTESIS/app/src/main/res/layout/fragment_product.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Diego/AndroidStudioProjects/GIT/appTESIS/app/src/main/res/layout/fragment_product_add.xml" value="0.3255208333333333" />
+        <entry key="..\:/Users/Diego/AndroidStudioProjects/GIT/appTESIS/app/src/main/res/layout/fragment_proveedor.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Diego/AndroidStudioProjects/GIT/appTESIS/app/src/main/res/layout/fragment_proveedor_add.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Diego/AndroidStudioProjects/GIT/appTESIS/app/src/main/res/menu/activity_menueee_drawer.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

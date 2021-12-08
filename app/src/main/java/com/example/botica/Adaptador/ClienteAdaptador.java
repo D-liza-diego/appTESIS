@@ -60,7 +60,7 @@ public class ClienteAdaptador extends RecyclerView.Adapter<ClienteAdaptador.Clie
     }
 
     @Override
-    public void onBindViewHolder( ClienteViewHolder holder, int position) {
+    public void onBindViewHolder( ClienteViewHolder holder,  int position) {
         Cliente cliente = Listacliente.get(position);
         holder.txtapellidos.setText(cliente.getApellidos());
         holder.txtnombre.setText(cliente.getNombre());

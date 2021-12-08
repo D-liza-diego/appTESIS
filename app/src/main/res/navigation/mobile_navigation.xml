@@ -42,4 +42,14 @@
         android:name="com.example.botica.proveedor_add"
         android:label="Añadir proveedor"
         tools:layout="@layout/fragment_proveedor_add" />
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="com.example.botica.ProductFragment"
+        android:label="Productos"
+        tools:layout="@layout/fragment_product" />
+    <fragment
+        android:id="@+id/product_addFragment"
+        android:name="com.example.botica.Product_addFragment"
+        android:label="Añadir productos"
+        tools:layout="@layout/fragment_product_add" />
 </navigation>

@@ -56,7 +56,6 @@ public class ProveedorFragment extends Fragment {
     RecyclerView recyclerView;
     ProveedorAdaptador Padaptador;
     List<Proveedor> Listaproveedor;
-    TextView txtmenu;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

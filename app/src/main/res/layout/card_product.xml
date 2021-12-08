@@ -13,7 +13,7 @@
         app:cardCornerRadius="3dp">
 
         <LinearLayout
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:animateLayoutChanges="true"
             android:layout_gravity="center_horizontal"
@@ -21,57 +21,67 @@
             android:orientation="horizontal"
             android:padding="5dp">
 
+
             <ImageView
-                android:layout_width="150px"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/ic_baseline_person_24">
 
             </ImageView>
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:orientation="vertical">
 
+
                 <TextView
-                    android:id="@+id/CVapellidos"
+                    android:id="@+id/product_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="APELLIDOP"
+                    android:text="producto nombre"
                     android:textSize="18sp"
                     android:textStyle="bold"></TextView>
-
                 <TextView
-                    android:id="@+id/CVnombres"
+                    android:id="@+id/product_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="22dp"
-                    android:text="nombre"
+                    android:text="Precio"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
                     android:textSize="15sp"></TextView>
 
                 <TextView
-                    android:id="@+id/CVdni"
+                    android:id="@+id/product_stock"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="38dp"
-                    android:text="DNI"
-                    android:textSize="15sp"></TextView>
+                    android:text="Stock"
+                    android:layout_marginTop="40dp"
+                    android:textSize="13sp"></TextView>
 
                 <TextView
-                    android:id="@+id/menu"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="1dp"
+                    android:id="@+id/product_cat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Categoria"
+                    android:layout_marginTop="60dp"
+                    android:textSize="13sp"></TextView>
+
+
+                <TextView
+                    android:id="@+id/deleteP"
+                    android:layout_width="100px"
+                    android:layout_height="100px"
                     android:layout_marginEnd="5dp"
-                    android:background="@drawable/ic_baseline_more_vert_24"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/ic_baseline_delete_24"
                     android:textSize="40sp"
                     android:textStyle="bold"></TextView>
 
             </RelativeLayout>
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
 
 
