@@ -60,25 +60,11 @@ public class ClienteFragment extends Fragment{
 
         Listacliente = new ArrayList<>();
         recyclerView=(RecyclerView) root.findViewById(R.id.Reciclado);
-        buscador=(SearchView)root.findViewById(R.id.buscar);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
         
         cargarC(root);
-
-        buscador.setOnQueryTextListener( new SearchView.OnQueryTextListener()
-        {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                Cadaptador.filtrado(s);
-                return false;
-            }
-        });    return root;
+        return root;
 
 
 
@@ -96,6 +82,20 @@ public class ClienteFragment extends Fragment{
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.menuclient,menu);
         super.onCreateOptionsMenu(menu, inflater);
+        MenuItem item= menu.findItem(R.id.buscar_client);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                Cadaptador.filtrado(s);
+                return false;
+            }
+        });
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

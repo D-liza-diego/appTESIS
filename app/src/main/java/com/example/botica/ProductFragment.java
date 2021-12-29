@@ -52,7 +52,7 @@ public class ProductFragment extends Fragment {
         añadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.product_addFragment);
+                //Navigation.findNavController(view).navigate(R.id.product_addFragment);
             }
         });
         buscador=(SearchView)root.findViewById(R.id.product_buscar);

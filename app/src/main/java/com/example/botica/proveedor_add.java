@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -25,6 +26,7 @@ import com.example.botica.Adaptador.ClienteAdaptador;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +34,8 @@ import java.util.Map;
 public class proveedor_add extends Fragment {
 
     Button buscar, mandar;
-    EditText rucbuscar,ruc,social,fiscal,estado;
+    EditText rucbuscar,ruc,nombre,direccion,estado,contacto;
+    TextView truc,trazon,tdir,tstat,tcontact;
 
 
     @Override
@@ -45,9 +48,16 @@ public class proveedor_add extends Fragment {
         mandar=(Button)root.findViewById(R.id.SubirP);
         rucbuscar=(EditText)root.findViewById(R.id.ruc_buscar);
         ruc=(EditText)root.findViewById(R.id.ruc_add);
-        social=(EditText)root.findViewById(R.id.Rsocial_add);
-        fiscal=(EditText)root.findViewById(R.id.Dfiscal_add);
+        nombre=(EditText)root.findViewById(R.id.Rsocial_add);
+        direccion=(EditText)root.findViewById(R.id.Dfiscal_add);
         estado=(EditText)root.findViewById(R.id.Estado_add);
+        contacto=(EditText) root.findViewById(R.id.Contacto_add);
+        truc=(TextView)root.findViewById(R.id.txtruc);
+        trazon=(TextView)root.findViewById(R.id.txtrazon);
+        tdir=(TextView)root.findViewById(R.id.txtdir);
+        tstat=(TextView)root.findViewById(R.id.txtstat);
+        tcontact=(TextView)root.findViewById(R.id.txtcontact);
+        invisibilidad(root);
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,38 +73,39 @@ public class proveedor_add extends Fragment {
         });
         return root;
     }
-    void Subir(View root)
-    {
-        final String SubirP ="http://192.168.1.34/tesis/InsertProveedor.php";
-        StringRequest stringRequest= new StringRequest(Request.Method.POST, SubirP,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response)
-                    {
-                        Navigation.findNavController(root).navigate(R.id.proveedorFragment);
-                        Log.i("subir",response);
-                        Toast.makeText(getContext(), response, Toast.LENGTH_SHORT).show();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+    void Subir(View root) {
+        if (contacto.getText().toString().equals("")) { Toast.makeText(getContext(), "Ingrese numero", Toast.LENGTH_SHORT).show();
+        } else {
+            final String SubirP = "http://192.168.1.34/tesis/InsertProveedor.php";
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, SubirP,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            Navigation.findNavController(root).navigate(R.id.proveedorFragment);
+                            Log.i("subir", response);
+                            Toast.makeText(getContext(), response, Toast.LENGTH_SHORT).show();
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
 
-            }
-        })
-        {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> parametros=new HashMap<>();
-                parametros.put("RUC",ruc.getText().toString());
-                parametros.put("RazonSocial",social.getText().toString());
-                parametros.put("direccion",fiscal.getText().toString());
-                parametros.put("estado",estado.getText().toString());
-                return parametros;
-            }
-        };
-        Volley.newRequestQueue(getContext()).add(stringRequest);
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> parametros = new HashMap<>();
+                    parametros.put("nombre", nombre.getText().toString());
+                    parametros.put("ruc", ruc.getText().toString());
+                    parametros.put("estado", estado.getText().toString());
+                    parametros.put("direccion", direccion.getText().toString());
+                    parametros.put("contacto", contacto.getText().toString());
+                    return parametros;
+                }
+            };
+            Volley.newRequestQueue(getContext()).add(stringRequest);
 
+        }
     }
     void Consultar(View root)
 
@@ -108,9 +119,10 @@ public class proveedor_add extends Fragment {
                             Log.i("Mensaje",response);
                             JSONObject datos= new JSONObject(response.toString());
                             ruc.setText(datos.getString("ruc"));
-                            social.setText(datos.getString("razonSocial"));
-                            fiscal.setText(datos.getString("direccion"));
+                            nombre.setText(datos.getString("razonSocial"));
+                            direccion.setText(datos.getString("direccion"));
                             estado.setText(datos.getString("estado"));
+                            visibilidad(root);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -119,11 +131,43 @@ public class proveedor_add extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                invisibilidad(root);
+                Toast.makeText(getContext(), "Error al buscar", Toast.LENGTH_LONG).show();
+
 
             }
         });
         Volley.newRequestQueue(getContext()).add(stringRequest);
+
+    }
+    void visibilidad(View root)
+    {
+        truc.setVisibility(View.VISIBLE);
+        trazon.setVisibility(View.VISIBLE);
+        tdir.setVisibility(View.VISIBLE);
+        tstat.setVisibility(View.VISIBLE);
+        tcontact.setVisibility(View.VISIBLE);
+        ruc.setVisibility(View.VISIBLE);
+        nombre.setVisibility(View.VISIBLE);
+        direccion.setVisibility(View.VISIBLE);
+        estado.setVisibility(View.VISIBLE);
+        contacto.setVisibility(View.VISIBLE);
+        mandar.setVisibility(View.VISIBLE);
+
+    }
+    void invisibilidad(View root)
+    {
+        truc.setVisibility(View.INVISIBLE);
+        trazon.setVisibility(View.INVISIBLE);
+        tdir.setVisibility(View.INVISIBLE);
+        tstat.setVisibility(View.INVISIBLE);
+        tcontact.setVisibility(View.INVISIBLE);
+        ruc.setVisibility(View.INVISIBLE);
+        nombre.setVisibility(View.INVISIBLE);
+        direccion.setVisibility(View.INVISIBLE);
+        estado.setVisibility(View.INVISIBLE);
+        contacto.setVisibility(View.INVISIBLE);
+        mandar.setVisibility(View.INVISIBLE);
 
     }
 }

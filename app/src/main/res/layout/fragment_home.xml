@@ -5,42 +5,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment"
-    android:background="@drawable/medicine"
     >
-
-
-    <GridLayout
-        android:layout_width="240dp"
-        android:layout_height="240dp"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
-        android:columnCount="2"
-        android:rowCount="2"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="212dp">
-
-        <ImageView
-            android:id="@+id/imgclient"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:background="@drawable/clientes"></ImageView>
-
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:background="@drawable/proveedor"></ImageView>
-
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:background="@drawable/ventas"></ImageView>
-
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:background="@drawable/graficos"></ImageView>
-
-
-    </GridLayout>
-
 </RelativeLayout>

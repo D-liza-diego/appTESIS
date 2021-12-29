@@ -2,6 +2,7 @@ package com.example.botica;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -56,20 +57,46 @@ public class ProveedorFragment extends Fragment {
     RecyclerView recyclerView;
     ProveedorAdaptador Padaptador;
     List<Proveedor> Listaproveedor;
+    View root;
+    String nombre, ruc,estado, direccion,contacto;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_proveedor, container, false);
+       root = inflater.inflate(R.layout.fragment_proveedor, container, false);
 
         Listaproveedor = new ArrayList<>();
         recyclerView=(RecyclerView) root.findViewById(R.id.recyclerP);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
         CargarP(root);
-        añadir=(Button)root.findViewById(R.id.BuscaProveedor);
-        buscador=(SearchView)root.findViewById(R.id.buscarP);
-        buscador.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        return root;
+
+
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+       inflater.inflate(R.menu.menuproveedor,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+        MenuItem item= menu.findItem(R.id.buscar_proveedor);
+        MenuItem item1 = menu.findItem(R.id.add_proveedor);
+        item1.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Navigation.findNavController(root).navigate(R.id.ayudaFragment);
+                return false;
+            }
+        });
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
                 return false;
@@ -81,41 +108,20 @@ public class ProveedorFragment extends Fragment {
                 return false;
             }
         });
-        añadir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.proveedor_add);
-            }
-        });
-        return root;
-
-
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        setHasOptionsMenu(true);
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-       inflater.inflate(R.menu.menuproveedor,menu);
-        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId())
         {
-            case R.id.RAscendente:
+            /*case R.id.RAscendente:
                 Collections.sort(Listaproveedor, Proveedor.RucASC);
                 Padaptador.notifyDataSetChanged();
                 return true;
             case R.id.RDescendente:
                 Collections.sort(Listaproveedor, Proveedor.RucDES);
                 Padaptador.notifyDataSetChanged();
-                return true;
+                return true;*/
             case R.id.NAscendente:
                 Collections.sort(Listaproveedor, Proveedor.NombreASC);
                 Padaptador.notifyDataSetChanged();
@@ -140,10 +146,12 @@ public class ProveedorFragment extends Fragment {
                             {
                                 JSONObject proveedorobject = supplier.getJSONObject(i);
 
-                                String ruc=proveedorobject.getString("RUC");
-                                String social=proveedorobject.getString("RazonSocial");
-                                String estado=proveedorobject.getString("estado");
-                                Proveedor proveedor= new Proveedor(ruc,social,estado);
+                                nombre=proveedorobject.getString("nombre");
+                                ruc=proveedorobject.getString("ruc");
+                                direccion=proveedorobject.getString("direccion");
+                                estado=proveedorobject.getString("estado");
+                                contacto=proveedorobject.getString("contacto");
+                                Proveedor proveedor= new Proveedor(nombre,ruc,direccion,estado,contacto);
                                 Listaproveedor.add(proveedor);
                             }
                             Padaptador= new ProveedorAdaptador(getActivity(), Listaproveedor);

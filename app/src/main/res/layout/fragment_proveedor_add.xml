@@ -15,55 +15,61 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="25dp"
             android:gravity="center_horizontal"
             android:text="BUSCAR PROVEEDOR"
-            android:textSize="16sp"
             android:textColor="@color/black"
-            android:textStyle="bold"/>
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
 
         <EditText
             android:id="@+id/ruc_buscar"
             android:layout_width="400px"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="24dp"
-            android:hint=""
+            android:hint="RUC"
             android:inputType="number"
             android:maxLength="11"
-            android:textSize="14dp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="14dp" />
 
         <Button
             android:id="@+id/EnviarP"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="90dp"
             android:layout_marginEnd="50dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="45dp"
+            android:background="@drawable/custombuttom"
             android:text="Buscar" />
 
 
         <TextView
+            android:id="@+id/txtruc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="170dp"
             android:text="RUC"
             android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="bold" />
 
         <EditText
+
             android:id="@+id/ruc_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="210dp"
+            android:layout_marginTop="190dp"
             android:layout_marginEnd="24dp"
             android:inputType="text"
             android:enabled="false"
@@ -71,21 +77,24 @@
             android:textColor="@color/black"/>
 
         <TextView
+
+            android:id="@+id/txtrazon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="250dp"
+            android:layout_marginTop="230dp"
             android:text="RAZON SOCIAL"
             android:textSize="15sp"
             android:textStyle="bold"
             android:textColor="@color/black"/>
 
         <EditText
+
             android:id="@+id/Rsocial_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="270dp"
+            android:layout_marginTop="250dp"
             android:layout_marginEnd="24dp"
             android:enabled="false"
             android:textColor="@color/black"
@@ -93,16 +102,19 @@
 
 
         <TextView
+
+            android:id="@+id/txtdir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="310dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="310dp"
             android:text="DIRECCION"
+            android:textColor="@color/black"
             android:textSize="15sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:textStyle="bold" />
 
         <EditText
+
             android:id="@+id/Dfiscal_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -114,18 +126,20 @@
             android:textSize="14dp" />
 
 
-
         <TextView
+
+            android:id="@+id/txtstat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="390dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="390dp"
             android:text="ESTADO"
+            android:textColor="@color/black"
             android:textSize="15dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:textStyle="bold" />
 
         <EditText
+
             android:id="@+id/Estado_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -136,17 +150,39 @@
             android:textColor="@color/black"
             android:textSize="14dp" />
 
+        <TextView
+            android:id="@+id/txtcontact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="430dp"
+            android:layout_marginLeft="30dp"
+            android:text="CONTACTO"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:id="@+id/Contacto_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="420dp"
+            android:layout_marginEnd="24dp"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:textSize="14dp" />
 
 
         <Button
             android:id="@+id/SubirP"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="45dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="48dp"
-            android:layout_marginTop="420dp"
+            android:layout_marginTop="520dp"
             android:layout_marginEnd="48dp"
             android:layout_marginBottom="45dp"
+            android:background="@drawable/custombuttom"
             android:gravity="center|center_horizontal|center_vertical"
             android:text="GUARDAR"
 

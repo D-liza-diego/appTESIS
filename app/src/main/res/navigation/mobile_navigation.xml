@@ -40,7 +40,7 @@
     <fragment
         android:id="@+id/proveedor_add"
         android:name="com.example.botica.proveedor_add"
-        android:label="Añadir proveedor"
+        android:label="Proveedores"
         tools:layout="@layout/fragment_proveedor_add" />
     <fragment
         android:id="@+id/productFragment"
@@ -52,4 +52,14 @@
         android:name="com.example.botica.Product_addFragment"
         android:label="Añadir productos"
         tools:layout="@layout/fragment_product_add" />
+    <fragment
+        android:id="@+id/DialogProveedor"
+        android:name="com.example.botica.ProveedorDialog"
+        android:label="Añadir productos"
+        tools:layout="@layout/proveedordetail" />
+    <fragment
+        android:id="@+id/ayudaFragment"
+        android:name="com.example.botica.AyudaFragment"
+        android:label="Centro de ayuda"
+        tools:layout="@layout/fragment_ayuda" />
 </navigation>
