@@ -11,21 +11,24 @@
     <item
         android:id="@+id/DNIASC"
         android:orderInCategory="100"
-        android:title="Dni ascendente"
+        android:title="Ordenar por dni"
         app:showAsAction="never" />
     <item
         android:id="@+id/DNIDES"
         android:orderInCategory="100"
-        android:title="Dni descendente"
-        app:showAsAction="never" />
+        android:title="Por dni ↓"
+        app:showAsAction="never"
+        android:visible="false"/>
     <item
         android:id="@+id/ApellidoASC"
         android:orderInCategory="100"
-        android:title="Apellido ascendente"
+        android:title="Ordenar por apellido"
         app:showAsAction="never" />
     <item
         android:id="@+id/ApellidoDES"
+        android:visible="false"
         android:orderInCategory="100"
-        android:title="Apellido descendente"
+        android:title="Por apellido ↓"
         app:showAsAction="never" />
+
 </menu>

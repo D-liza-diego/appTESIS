@@ -29,24 +29,23 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/CVP_ruc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="0dp"
+                android:text="RUC"
+                android:textSize="15sp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
                 android:id="@+id/CVP_Rsocial"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="20dp"
                 android:text="Razon social"
-                android:textSize="18sp"
-                android:textStyle="bold"></TextView>
-
-
-            <TextView
-                android:id="@+id/CVP_ruc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="RUC"
                 android:textSize="13sp"
-                android:visibility="gone"
                 android:textStyle=""></TextView>
 
 
@@ -56,6 +55,7 @@
                 android:layout_height="80px"
                 android:layout_alignParentLeft="true"
                 android:layout_marginTop="0dp"
+                android:gravity="center"
                 android:background="@drawable/ic_baseline_remove_red_eye_24"
                 android:textSize="40sp"
 

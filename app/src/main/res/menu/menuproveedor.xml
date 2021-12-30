@@ -15,13 +15,25 @@
         android:icon="@drawable/ic_baseline_add_24"
         app:showAsAction="always" />
     <item
-        android:id="@+id/NDescendente"
-        android:orderInCategory="100"
-        android:title="Nombre descendente"
-        app:showAsAction="never" />
-    <item
         android:id="@+id/NAscendente"
         android:orderInCategory="100"
+        android:title="Ordenar por nombre"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/NDescendente"
+        android:orderInCategory="100"
+        android:visible="false"
         android:title="Nombre ascendente"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/RAscendente"
+        android:orderInCategory="100"
+        android:title="Ordenar por ruc"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/RDescendente"
+        android:orderInCategory="100"
+        android:title="Nombre ascendente"
+        android:visible="false"
         app:showAsAction="never" />
 </menu>

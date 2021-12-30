@@ -5,7 +5,6 @@ import java.util.Comparator;
 
 public class Cliente implements Serializable {
 
-    private  String  Apellidos;
     private String Nombre;
     private int dni;
     private int idc;
@@ -26,26 +25,20 @@ public class Cliente implements Serializable {
     public static Comparator<Cliente> AASC = new Comparator<Cliente>() {
         @Override
         public int compare(Cliente c1, Cliente c2) {
-            return c1.getApellidos().compareTo(c2.getApellidos());
+            return c1.getNombre().compareTo(c2.getNombre());
         }
     };
     public static Comparator<Cliente> ADESC = new Comparator<Cliente>() {
         @Override
         public int compare(Cliente c1, Cliente c2) {
-            return c2.getApellidos().compareTo(c1.getApellidos());
+            return c2.getNombre().compareTo(c1.getNombre());
         }
     };
 
-
-    public Cliente(String apellidos, String nombre, int dni, int idc) {
-        Apellidos = apellidos;
+    public Cliente(String nombre, int dni, int idc) {
         Nombre = nombre;
         this.dni = dni;
         this.idc = idc;
-    }
-
-    public String getApellidos() {
-        return Apellidos;
     }
 
     public String getNombre() {

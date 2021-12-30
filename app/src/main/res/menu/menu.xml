@@ -2,23 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/RDescendente"
+        android:id="@+id/item_help"
+        android:title="ADD"
         android:orderInCategory="100"
-        android:title="Ruc descendente"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/RAscendente"
-        android:orderInCategory="100"
-        android:title="Ruc ascendente"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/NDescendente"
-        android:orderInCategory="100"
-        android:title="Nombre descendente"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/NAscendente"
-        android:orderInCategory="100"
-        android:title="Nombre ascendente"
-        app:showAsAction="never" />
+        android:icon="@drawable/ic_baseline_help_24"
+        app:showAsAction="always" />
 </menu>

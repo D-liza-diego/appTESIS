@@ -12,6 +12,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -54,6 +55,7 @@ public class ProveedorFragment extends Fragment {
 
     Button añadir;
     SearchView buscador;
+    int x,y;
     RecyclerView recyclerView;
     ProveedorAdaptador Padaptador;
     List<Proveedor> Listaproveedor;
@@ -91,7 +93,7 @@ public class ProveedorFragment extends Fragment {
         item1.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                Navigation.findNavController(root).navigate(R.id.ayudaFragment);
+                Navigation.findNavController(root).navigate(R.id.proveedor_add);
                 return false;
             }
         });
@@ -114,17 +116,56 @@ public class ProveedorFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId())
         {
-            /*case R.id.RAscendente:
-                Collections.sort(Listaproveedor, Proveedor.RucASC);
-                Padaptador.notifyDataSetChanged();
+            case R.id.RAscendente:
+                x++;
+                Handler handler= new Handler();
+                Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        x=0;
+                    }
+                };
+                if (x==1){
+                    Collections.sort(Listaproveedor, Proveedor.RucASC);
+                    Padaptador.notifyDataSetChanged();
+                }
+                if (x==2)
+                {
+                    Collections.sort(Listaproveedor, Proveedor.RucDES);
+                    Padaptador.notifyDataSetChanged();
+                }
+                if (x==3)
+                {
+                    x=0;
+                }
                 return true;
             case R.id.RDescendente:
                 Collections.sort(Listaproveedor, Proveedor.RucDES);
                 Padaptador.notifyDataSetChanged();
-                return true;*/
+                return true;
             case R.id.NAscendente:
-                Collections.sort(Listaproveedor, Proveedor.NombreASC);
-                Padaptador.notifyDataSetChanged();
+                y++;
+                Handler h= new Handler();
+                Runnable r = new Runnable() {
+                    @Override
+                    public void run() {
+                        y=0;
+                    }
+                };
+                if (y==1){
+                    Collections.sort(Listaproveedor, Proveedor.NombreASC);
+                    Padaptador.notifyDataSetChanged();
+                }
+                if (y==2)
+                {
+                    Collections.sort(Listaproveedor, Proveedor.NombreDES);
+                    Padaptador.notifyDataSetChanged();
+                }
+                if (y==3)
+                {
+                    y=0;
+                }
+
                 return true;
             case R.id.NDescendente:
                 Collections.sort(Listaproveedor, Proveedor.NombreDES);

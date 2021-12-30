@@ -22,8 +22,8 @@
             android:padding="5dp">
 
             <ImageView
-                android:layout_width="150px"
-                android:layout_height="match_parent"
+                android:layout_width="75px"
+                android:layout_height="75px"
                 android:background="@drawable/ic_baseline_person_24">
 
             </ImageView>
@@ -35,28 +35,32 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/CVapellidos"
+                    android:id="@+id/CVdni"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:text="DNI"
+                    android:textStyle="bold"
+                    android:textSize="15sp"></TextView>
+
+                <TextView
+                    android:id="@+id/CVapellidos"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content"
                     android:text="APELLIDOP"
-                    android:textSize="18sp"
-                    android:textStyle="bold"></TextView>
+                    android:textSize="15sp"></TextView>
 
                 <TextView
                     android:id="@+id/CVnombres"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="22dp"
+                    android:visibility="gone"
                     android:text="nombre"
                     android:textSize="15sp"></TextView>
 
-                <TextView
-                    android:id="@+id/CVdni"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="38dp"
-                    android:text="DNI"
-                    android:textSize="15sp"></TextView>
+
 
                 <TextView
                     android:id="@+id/menu"

@@ -52,7 +52,6 @@ public class clienteEditFragment extends Fragment {
         Edni=root.findViewById(R.id.dniUP);
         send=root.findViewById(R.id.EnviarC);
 
-        Eapellidos.setText(cliente.getApellidos());
         Enombres.setText(cliente.getNombre());
         Edni.setText(String.valueOf(cliente.getDni()));
         upid=(String.valueOf(cliente.getIdc()));

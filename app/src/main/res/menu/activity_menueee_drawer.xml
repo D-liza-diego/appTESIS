@@ -4,10 +4,12 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+        <!-- TODO: Update blank fragment layout
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_home" />
+
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
@@ -15,7 +17,11 @@
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="@string/menu_slideshow" /> -->
+        <item
+            android:id="@+id/principalFragment"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Inicio" />
         <item
             android:id="@+id/clienteFragment"
             android:icon="@drawable/ic_menu_slideshow"

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -51,6 +52,7 @@ public class ClienteFragment extends Fragment{
     RecyclerView recyclerView;
     ClienteAdaptador Cadaptador;
     List<Cliente> Listacliente;
+    int i,j;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -102,16 +104,59 @@ public class ClienteFragment extends Fragment{
         switch (item.getItemId())
         {
             case R.id.DNIASC:
-                Collections.sort(Listacliente, Cliente.DNIASC);
-                Cadaptador.notifyDataSetChanged();
+                i++;
+                Handler handler= new Handler();
+                Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        i=0;
+                    }
+                };
+                if (i==1){
+                    Collections.sort(Listacliente, Cliente.DNIASC);
+                    Cadaptador.notifyDataSetChanged();
+                }
+                if (i==2)
+                {
+                    Collections.sort(Listacliente, Cliente.DNIDES);
+                    Cadaptador.notifyDataSetChanged();
+                }
+                if (i==3)
+                {
+                    i=0;
+                }
+
                 return true;
             case R.id.DNIDES:
                 Collections.sort(Listacliente, Cliente.DNIDES);
                 Cadaptador.notifyDataSetChanged();
                 return true;
+
             case R.id.ApellidoASC:
-                Collections.sort(Listacliente, Cliente.AASC);
-                Cadaptador.notifyDataSetChanged();
+                j++;
+
+                Handler h= new Handler();
+                Runnable r = new Runnable() {
+                    @Override
+                    public void run() {
+                        j=0;
+                    }
+                };
+                if (j==1){
+                    Collections.sort(Listacliente, Cliente.AASC);
+                    Cadaptador.notifyDataSetChanged();
+                }
+                if (j==2)
+                {
+                    Collections.sort(Listacliente, Cliente.ADESC);
+                    Cadaptador.notifyDataSetChanged();
+                }
+                if (j==3)
+                {
+                    j=0;
+                }
+
+
                 return true;
             case R.id.ApellidoDES:
                 Collections.sort(Listacliente, Cliente.ADESC);
@@ -133,10 +178,9 @@ public class ClienteFragment extends Fragment{
                                 JSONObject clientobject = client.getJSONObject(i);
 
                                 int id=clientobject.getInt("idCliente");
-                                String apellido=clientobject.getString("Apellidos");
                                 String nombre=clientobject.getString("Nombre");
                                 int dni=clientobject.getInt("dni");
-                                Cliente cliente= new Cliente(apellido,nombre,dni,id);
+                                Cliente cliente= new Cliente(nombre,dni,id);
                                 Listacliente.add(cliente);
                             }
                             Cadaptador= new ClienteAdaptador(getActivity(), Listacliente);
