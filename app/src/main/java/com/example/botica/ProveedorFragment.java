@@ -54,7 +54,6 @@ public class ProveedorFragment extends Fragment {
     public static final String URL="http://192.168.1.34/tesis/ListaProveedor.php";
 
     Button añadir;
-    SearchView buscador;
     int x,y;
     RecyclerView recyclerView;
     ProveedorAdaptador Padaptador;
@@ -67,7 +66,7 @@ public class ProveedorFragment extends Fragment {
         // Inflate the layout for this fragment
        root = inflater.inflate(R.layout.fragment_proveedor, container, false);
 
-        Listaproveedor = new ArrayList<>();
+        Listaproveedor = new ArrayList<Proveedor>();
         recyclerView=(RecyclerView) root.findViewById(R.id.recyclerP);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
@@ -135,9 +134,7 @@ public class ProveedorFragment extends Fragment {
                     Padaptador.notifyDataSetChanged();
                 }
                 if (x==3)
-                {
-                    x=0;
-                }
+                {x=0;}
                 return true;
             case R.id.RDescendente:
                 Collections.sort(Listaproveedor, Proveedor.RucDES);
@@ -162,9 +159,7 @@ public class ProveedorFragment extends Fragment {
                     Padaptador.notifyDataSetChanged();
                 }
                 if (y==3)
-                {
-                    y=0;
-                }
+                {y=0;}
 
                 return true;
             case R.id.NDescendente:
@@ -186,22 +181,18 @@ public class ProveedorFragment extends Fragment {
                             for (int i=0; i<supplier.length(); i++)
                             {
                                 JSONObject proveedorobject = supplier.getJSONObject(i);
-
-                                nombre=proveedorobject.getString("nombre");
                                 ruc=proveedorobject.getString("ruc");
-                                direccion=proveedorobject.getString("direccion");
-                                estado=proveedorobject.getString("estado");
-                                contacto=proveedorobject.getString("contacto");
+                                nombre=proveedorobject.getString("name");
+                                direccion=proveedorobject.getString("address");
+                                estado=proveedorobject.getString("state");
+                                contacto=proveedorobject.getString("phone");
+
                                 Proveedor proveedor= new Proveedor(nombre,ruc,direccion,estado,contacto);
                                 Listaproveedor.add(proveedor);
                             }
                             Padaptador= new ProveedorAdaptador(getActivity(), Listaproveedor);
                             recyclerView.setAdapter(Padaptador);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
+                        } catch (JSONException e) {e.printStackTrace();}
                     }
                 }, new Response.ErrorListener() {
             @Override

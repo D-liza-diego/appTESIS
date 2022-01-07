@@ -66,5 +66,12 @@
         android:name="com.example.botica.AyudaFragment"
         android:label="Centro de ayuda"
         tools:layout="@layout/fragment_ayuda" />
+    <fragment
+            android:id="@+id/ventasFragment"
+            android:name="com.example.botica.VentasFragment"
+            android:label="Ventas"
+            tools:layout="@layout/fragment_ventas"/>
+    <fragment android:id="@+id/ventaDetalleFragment" android:name="com.example.botica.VentaDetalleFragment"
+              android:label="fragment_venta_detalle" tools:layout="@layout/fragment_venta_detalle"/>
 
 </navigation>

@@ -52,14 +52,22 @@ public class ProductoAdaptador extends RecyclerView.Adapter<ProductoAdaptador.Pr
                 final View customLayout = view.inflate(view.getContext(), R.layout.product_detail, null);
                 TextView txtpname=customLayout.findViewById(R.id.product_detail_nombre);
                 txtpname.setText(producto.getProduct_name());
+
+                TextView txtpcode=customLayout.findViewById(R.id.product_detail_barcode);
+                txtpcode.setText(producto.getProduct_barcode());
+
                 TextView txtdes=customLayout.findViewById(R.id.product_detail_des);
                 txtdes.setText(producto.getProduct_des());
+
                 TextView txtpprice=customLayout.findViewById(R.id.product_detail_precio);
                 txtpprice.setText(producto.getProduct_price());
+
                 TextView txtpstock=customLayout.findViewById(R.id.product_detail_stock);
                 txtpstock.setText(producto.getProduct_stock());
+
                 TextView txtpcat=customLayout.findViewById(R.id.product_detail_cat);
                 txtpcat.setText(producto.getProduct_cat());
+
                 ImageView imagen= customLayout.findViewById(R.id.product_detail_imagen);
                 Glide.with(mCtx)
                         .load(producto.getProduct_imagen())

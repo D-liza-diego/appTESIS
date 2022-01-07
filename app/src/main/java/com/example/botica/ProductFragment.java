@@ -154,15 +154,16 @@ public class ProductFragment extends Fragment {
                             {
                                 JSONObject productobject = product.getJSONObject(i);
 
-                                int id_product=productobject.getInt("id_product");
-                                String pro_name=productobject.getString("product_name");
-                                String pro_price=productobject.getString("prize");
+                                int id_product=productobject.getInt("id");
+                                String pro_name=productobject.getString("name");
+                                String pro_price=productobject.getString("price");
                                 String pro_stock=productobject.getString("stock");
-                                String categoria=productobject.getString("cat_name");
-                                String descripcion=productobject.getString("descripcion");
+                                String pro_description=productobject.getString("description");
+                                String categoria=productobject.getString("C.name");
+                                String pro_barcode=productobject.getString("barcode");
                                 String imagen=productobject.getString("image");
 
-                                Producto producto= new Producto(id_product,pro_name,pro_price,pro_stock,categoria,descripcion,imagen);
+                                Producto producto= new Producto(id_product,pro_name,pro_price,pro_barcode,pro_stock,categoria,pro_description,imagen);
                                 listaproducto.add(producto);
                             }
                             PROadaptador= new ProductoAdaptador(getActivity(), listaproducto);

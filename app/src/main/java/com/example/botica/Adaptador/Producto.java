@@ -6,6 +6,7 @@ public class Producto {
     private int id_product;
     private String product_name;
     private String product_price;
+    private String product_barcode;
     private String product_stock;
     private String product_cat;
     private String product_des;
@@ -36,12 +37,11 @@ public class Producto {
         }
     };
 
-
-
-    public Producto(int id_product, String product_name, String product_price, String product_stock, String product_cat, String product_des, String product_imagen) {
+    public Producto(int id_product, String product_name, String product_price, String product_barcode, String product_stock, String product_cat, String product_des, String product_imagen) {
         this.id_product = id_product;
         this.product_name = product_name;
         this.product_price = product_price;
+        this.product_barcode = product_barcode;
         this.product_stock = product_stock;
         this.product_cat = product_cat;
         this.product_des = product_des;
@@ -58,6 +58,10 @@ public class Producto {
 
     public String getProduct_price() {
         return product_price;
+    }
+
+    public String getProduct_barcode() {
+        return product_barcode;
     }
 
     public String getProduct_stock() {

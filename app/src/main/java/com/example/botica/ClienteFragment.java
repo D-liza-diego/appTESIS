@@ -177,9 +177,9 @@ public class ClienteFragment extends Fragment{
                             {
                                 JSONObject clientobject = client.getJSONObject(i);
 
-                                int id=clientobject.getInt("idCliente");
-                                String nombre=clientobject.getString("Nombre");
-                                int dni=clientobject.getInt("dni");
+                                int id=clientobject.getInt("id");
+                                String nombre=clientobject.getString("name");
+                                int dni=clientobject.getInt("document");
                                 Cliente cliente= new Cliente(nombre,dni,id);
                                 Listacliente.add(cliente);
                             }

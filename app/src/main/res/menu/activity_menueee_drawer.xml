@@ -20,19 +20,23 @@
             android:title="@string/menu_slideshow" /> -->
         <item
             android:id="@+id/principalFragment"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_baseline_multiline_chart_24"
             android:title="Inicio" />
         <item
             android:id="@+id/clienteFragment"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_baseline_person_24"
             android:title="@string/menu_cliente" />
         <item
             android:id="@+id/proveedorFragment"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_baseline_business_24"
             android:title="@string/menu_proveedor" />
         <item
             android:id="@+id/productFragment"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_baseline_storefront_24"
             android:title="Producto" />
+        <item
+                android:id="@+id/ventasFragment"
+                android:icon="@drawable/ic_baseline_storefront_24"
+                android:title="Ventas" />
     </group>
 </menu>
