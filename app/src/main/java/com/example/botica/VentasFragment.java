@@ -2,11 +2,13 @@ package com.example.botica;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.*;
+import android.widget.SearchView;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.android.volley.Request;
@@ -20,10 +22,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class VentasFragment extends Fragment {
     View root;
+    int i,j;
     RecyclerView recyclerView;
     VentaAdaptador Vadaptador;
     List<Venta> Listaventa;
@@ -39,6 +43,88 @@ public class VentasFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
         cargar(root);
         return root;
+    }
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menuventas,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+        MenuItem item= menu.findItem(R.id.buscar_venta);
+
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                Vadaptador.filtrado(s);
+                return false;
+            }
+        });
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.ventafecha:
+                i++;
+                Handler handler= new Handler();
+                Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        i=0;
+                    }
+                };
+                if (i==1){
+                    Collections.sort(Listaventa, Venta.VentaFasc);
+                    Vadaptador.notifyDataSetChanged();
+                }
+                if (i==2)
+                {
+                    Collections.sort(Listaventa, Venta.VentaFdesc);
+                    Vadaptador.notifyDataSetChanged();
+                }
+                if (i==3)
+                {
+                    i=0;
+                }
+
+                return true;
+
+            case R.id.ventamonto:
+                j++;
+                Handler h= new Handler();
+                Runnable r = new Runnable() {
+                    @Override
+                    public void run() {
+                        j=0;
+                    }
+                };
+                if (j==1){
+                    Collections.sort(Listaventa, Venta.VentaMasc);
+                    Vadaptador.notifyDataSetChanged();
+                }
+                if (j==2)
+                {
+                    Collections.sort(Listaventa, Venta.VentaMdsc);
+                    Vadaptador.notifyDataSetChanged();
+                }
+                if (j==3)
+                {
+                    j=0;
+                }
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
     void cargar(View root)
     {

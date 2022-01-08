@@ -1,7 +1,9 @@
 package com.example.botica;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
+import android.telephony.BarringInfo;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,9 +22,19 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.anychart.anychart.*;
-import com.example.botica.Adaptador.Producto;
-import com.example.botica.Adaptador.ProductoAdaptador;
-import com.example.botica.Adaptador.Proveedor;
+import com.example.botica.Adaptador.*;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
+import lecho.lib.hellocharts.model.*;
+import lecho.lib.hellocharts.view.LineChartView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,28 +45,37 @@ import java.util.List;
 
 public class PrincipalFragment extends Fragment {
     public static final String URL="http://192.168.1.34/tesis/ListarProducto.php";
+    public static final String URL1="http://192.168.1.34/tesis/ListarVentasHechas.php";
+    public static final String URL2="http://192.168.1.34/tesis/ListarCantidadVentasTotal.php";
     View root;
-    List<DataEntry> datos;
-    AnyChartView anyChart;
-    List<Producto> Lproductos;
+    //grafico ventas * producto
+    List<GraficoVentas> Lventas = new ArrayList<>();
+    List<DataEntry> datos2= new ArrayList<>();
+    List<DataEntry> datos3 = new ArrayList<>();
+    AnyChartView anyChartView, anyChartView2;
+    //grafico ventas * mes
+    List<CantidadVentas> LcantidadV= new ArrayList<>();
 
-    String[] months ={"lunes","martes"};
-    int [] salary ={150,152,53};
-
+    //grafico barras
+    BarChart barChart;
+    ArrayList<BarEntry> barEntryArrayList = new ArrayList<>();
+    ArrayList<String> labels = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_principal, container, false);
-        Lproductos = new ArrayList<>();
-        datos= new ArrayList<>();
-        anyChart=(AnyChartView) root.findViewById(R.id.grafico_pie);
-        grafico1(root);
+        anyChartView=(AnyChartView)root.findViewById(R.id.grafico_ventasproducto);
+        anyChartView2=(AnyChartView) root.findViewById(R.id.graficoventasmes);
+        barChart=(BarChart)root.findViewById(R.id.grafico_barras);
+        graficoProductoVentas(root);
+        graficoVentasMes(root);
+        prueba(root);
         return root;
     }
-    void grafico1 (View root)
+    void prueba(View root)
     {
-        StringRequest stringRequest= new StringRequest(Request.Method.GET, URL,
+        StringRequest stringRequest= new StringRequest(Request.Method.GET, URL2,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -63,22 +84,36 @@ public class PrincipalFragment extends Fragment {
                             for (int i=0; i<product.length(); i++)
                             {
                                 JSONObject productobject = product.getJSONObject(i);
-                                int id_product=productobject.getInt("id");
-                                String pro_name=productobject.getString("name");
-                                String pro_price=productobject.getString("price");
-                                String pro_stock=productobject.getString("stock");
-                                String pro_description=productobject.getString("description");
-                                String categoria=productobject.getString("C.name");
-                                String pro_barcode=productobject.getString("barcode");
-                                String imagen=productobject.getString("image");
-                                Producto producto= new Producto(id_product,pro_name,pro_price,pro_barcode,pro_stock,categoria,pro_description,imagen);
-                                Lproductos.add(producto);
-                                datos.add(new ValueDataEntry(productobject.getString("name"), Integer.valueOf(productobject.getString("stock"))));
+                                String mes=productobject.getString("Mes");
+                                String total=productobject.getString("Total");
+                                String cantidad=productobject.getString("Cantidad");
+                                CantidadVentas cantidadVentas= new CantidadVentas(mes,total,cantidad);
+                                LcantidadV.add(cantidadVentas);
+                                barEntryArrayList.add(new BarEntry(i,Integer.valueOf(total)));
+                                labels.add(mes);
                             }
-                            Pie pie=AnyChart.pie();
-                            pie.data(datos);
-                            pie.setTitle("Salary");
-                            anyChart.setChart(pie);
+                            BarDataSet barDataSet= new BarDataSet(barEntryArrayList,labels.toString());
+                            barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+                            barDataSet.setValueTextSize(20);
+                            /*Description description = new Description();
+                            description.setText("Meses");
+                            barChart.setDescription(description);*/
+                            BarData barData = new BarData(barDataSet);
+                            barChart.setData(barData);
+                            //
+                            XAxis xAxis= barChart.getXAxis();
+                            xAxis.setValueFormatter(new IndexAxisValueFormatter(labels));
+                            //
+                            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM_INSIDE);
+                            xAxis.setTextSize(50);
+                            xAxis.setTextColor(ColorTemplate.MATERIAL_COLORS.length);
+                            xAxis.setDrawGridLines(true);
+                            xAxis.setDrawAxisLine(true);
+                            xAxis.setGranularity(1f);
+                            xAxis.setLabelCount(labels.size());
+                            xAxis.setLabelRotationAngle(270);
+                            barChart.animateY(2000);
+                            barChart.invalidate();
                         } catch (JSONException e) {e.printStackTrace();}
                     }
                 }, new Response.ErrorListener() {
@@ -87,8 +122,72 @@ public class PrincipalFragment extends Fragment {
                 Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();}
         });
         Volley.newRequestQueue(getContext()).add(stringRequest);
-
     }
+    void graficoVentasMes(View root)
+    {
+        StringRequest stringRequest= new StringRequest(Request.Method.GET, URL2,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray product  = new JSONArray(response);
+                            for (int i=0; i<product.length(); i++)
+                            {
+                                JSONObject productobject = product.getJSONObject(i);
+                                String mes=productobject.getString("Mes");
+                                String total=productobject.getString("Total");
+                                String cantidad=productobject.getString("Cantidad");
+
+                                CantidadVentas cantidadVentas= new CantidadVentas(mes,total,cantidad);
+                                LcantidadV.add(cantidadVentas);
+                                datos3.add(new ValueDataEntry(mes,Integer.valueOf(total)));
+
+                                Pie pie=AnyChart.pie();
+                                pie.data(datos3);
+                                pie.setTitle("VENTAS AL MES");
+                                anyChartView2.setChart(pie);
+                            }
+
+                        } catch (JSONException e) {e.printStackTrace();}
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();}
+        });
+        Volley.newRequestQueue(getContext()).add(stringRequest);
+    }
+    void graficoProductoVentas(View root)
+    {
+        StringRequest stringRequest= new StringRequest(Request.Method.GET, URL1,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray jsonArray  = new JSONArray(response);
+                            for (int i=0; i<jsonArray.length(); i++)
+                            {
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                String pro_name=jsonObject.getString("P.name");
+                                String pro_can=jsonObject.getString("TotalQuantity");
+                                GraficoVentas graficoVentas= new GraficoVentas(pro_name,pro_can);
+                                Lventas.add(graficoVentas);
+                                datos2.add(new ValueDataEntry(pro_name, Integer.valueOf(pro_can)));
+                            }
+                            Pie pie=AnyChart.pie();
+                            pie.data(datos2);
+                            pie.setTitle("TOP PRODUCTOS VENDIDOS");
+                            anyChartView.setChart(pie);
+                        } catch (JSONException e) {e.printStackTrace();}
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();}
+        });
+        Volley.newRequestQueue(getContext()).add(stringRequest);
+    }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

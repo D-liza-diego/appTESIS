@@ -27,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class VentaAdaptador extends  RecyclerView.Adapter<VentaAdaptador.VentaViewHolder>  {
     private Context mCtx;
@@ -43,6 +44,8 @@ public class VentaAdaptador extends  RecyclerView.Adapter<VentaAdaptador.VentaVi
     public VentaAdaptador(Context mCtx, List<Venta> listaVenta) {
         this.mCtx = mCtx;
         ListaVenta = listaVenta;
+        Listafiltrada= new ArrayList<>();
+        Listafiltrada.addAll(listaVenta);
     }
 
     @NonNull
@@ -150,6 +153,32 @@ public class VentaAdaptador extends  RecyclerView.Adapter<VentaAdaptador.VentaVi
             }
         });
 
+    }
+    public void filtrado (String buscador)
+    {
+        int longitud= buscador.length();
+        if(longitud==0)
+        {
+            ListaVenta.clear();
+            ListaVenta.addAll(Listafiltrada);
+        }else
+        {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N)
+            {
+                List<Venta> collecion = ListaVenta.stream()
+                        .filter(i->i.getClname().toLowerCase().contains(buscador.toLowerCase()))
+                        .collect(Collectors.toList());
+                ListaVenta.clear();
+                ListaVenta.addAll(collecion);
+            }else
+            {
+                for(Venta venta:Listafiltrada)
+                {
+                    if(venta.getClname().toLowerCase().contains(buscador.toLowerCase()))
+                    { ListaVenta.add(venta); }
+                }
+            }
+        }notifyDataSetChanged();
     }
 
     @Override

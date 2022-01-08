@@ -1,31 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-              android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".PrincipalFragment">
-    <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="360dp">
-        <com.anychart.anychart.AnyChartView
-                android:id="@+id/grafico.pie"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                />
+                android:layout_height="360dp">
+            <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/grafico_barras"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="360dp">
+            <com.anychart.anychart.AnyChartView
+                    android:id="@+id/graficoventasmes"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="360dp">
+            <com.anychart.anychart.AnyChartView
+                    android:id="@+id/grafico_ventasproducto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+        </LinearLayout>
+
+
+
+
     </LinearLayout>
 
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="360dp">
 
 
-    </LinearLayout>
-        
-    </ScrollView>
 
-</LinearLayout>
+</ScrollView>

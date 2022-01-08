@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+>
+    <item
+            android:id="@+id/buscar_venta"
+            android:title="Buscar"
+            android:orderInCategory="100"
+            app:actionViewClass="android.widget.SearchView"
+            app:showAsAction="always" />
+    <item
+            android:id="@+id/ventafecha"
+            android:orderInCategory="100"
+            android:title="Ordenar por fecga"
+            app:showAsAction="never" />
+    <item
+            android:id="@+id/ventamonto"
+            android:orderInCategory="100"
+            android:title="Ordenar por monto"
+            app:showAsAction="never"
+            android:visible="true"/>
+
+</menu>
