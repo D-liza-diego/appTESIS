@@ -21,4 +21,7 @@
 
     <style name="Theme.Botica.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.Botica.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="splashscreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
 </resources>
